@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="panel mx-auto" style="max-width: 680px;">
+    <h1 class="h3 mb-4">Book Appointment</h1>
+    <form method="POST" enctype="multipart/form-data" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="mb-3">{{ form.doctor.label(class="form-label") }} {{ form.doctor(class="form-select") }}</div>
+        <div class="row g-3">
+            <div class="col-md-6 mb-3">{{ form.appointment_date.label(class="form-label") }} {{ form.appointment_date(class="form-control") }}</div>
+            <div class="col-md-6 mb-3">{{ form.appointment_time.label(class="form-label") }} {{ form.appointment_time(class="form-control") }}</div>
+        </div>
+        <div class="mb-4">
+            {{ form.report.label(class="form-label") }}
+            {{ form.report(class="form-control") }}
+            <div class="form-text">Accepted: PDF, JPG, PNG. Maximum size: 10 MB.</div>
+        </div>
+        {{ form.submit(class="btn btn-primary") }}
+        <a class="btn btn-outline-secondary" href="{{ url_for('patient_dashboard') }}">Cancel</a>
+    </form>
+</div>
+{% endblock %}

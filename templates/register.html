@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Patient Registration</title>
-</head>
-<body>
-    <h2>Patient Registration</h2>
-
-    <form method="POST">
+{% extends "base.html" %}
+{% block content %}
+<div class="panel mx-auto" style="max-width: 560px;">
+    <h1 class="h3 mb-4">Patient Registration</h1>
+    <form method="POST" novalidate>
         {{ form.hidden_tag() }}
-
-        {{ form.name.label }}<br>
-        {{ form.name(size=40) }}<br><br>
-
-        {{ form.email.label }}<br>
-        {{ form.email(size=40) }}<br><br>
-
-        {{ form.phone.label }}<br>
-        {{ form.phone(size=40) }}<br><br>
-
-        {{ form.password.label }}<br>
-        {{ form.password(size=40) }}<br><br>
-
-        {{ form.submit() }}
+        <div class="mb-3">{{ form.name.label(class="form-label") }} {{ form.name(class="form-control") }}</div>
+        <div class="mb-3">{{ form.email.label(class="form-label") }} {{ form.email(class="form-control") }}</div>
+        <div class="mb-3">{{ form.phone.label(class="form-label") }} {{ form.phone(class="form-control") }}</div>
+        <div class="mb-4">{{ form.password.label(class="form-label") }} {{ form.password(class="form-control") }}</div>
+        {{ form.submit(class="btn btn-primary w-100") }}
     </form>
-</body>
-</html>
+</div>
+{% endblock %}

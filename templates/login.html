@@ -1,24 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Patient Login</title>
-</head>
-<body>
-
-<h2>Patient Login</h2>
-
-<form method="POST">
-    {{ form.hidden_tag() }}
-
-    {{ form.email.label }}<br>
-    {{ form.email(size=40) }}<br><br>
-
-    {{ form.password.label }}<br>
-    {{ form.password(size=40) }}<br><br>
-
-    {{ form.submit() }}
-
-</form>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<div class="panel mx-auto" style="max-width: 480px;">
+    <h1 class="h3 mb-4">{{ title }}</h1>
+    <form method="POST" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="mb-3">{{ form.email.label(class="form-label") }} {{ form.email(class="form-control") }}</div>
+        <div class="mb-4">{{ form.password.label(class="form-label") }} {{ form.password(class="form-control") }}</div>
+        {{ form.submit(class="btn btn-primary w-100") }}
+    </form>
+    {% if doctor_login %}
+        <p class="text-secondary small mt-3 mb-0">Demo doctors can be loaded with the seed script.</p>
+    {% else %}
+        <p class="text-secondary small mt-3 mb-0">New patient? <a href="{{ url_for('register') }}">Create an account</a>.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -3,3 +3,5 @@ venv/
 __pycache__/
 *.pyc
 uploads/
+.codex_node_write_test.txt
+gm_hospital.db

@@ -1,8 +1,10 @@
+from werkzeug.security import generate_password_hash
+
 from app import app
 from extensions import db
 from models.doctor import Doctor
 
-doctors = [
+DOCTORS = [
     {
         "name": "Dr. Ravi Kumar",
         "specialization": "General Physician",
@@ -24,17 +26,23 @@ doctors = [
 ]
 
 with app.app_context():
-    for doctor in doctors:
-        exists = Doctor.query.filter_by(email=doctor["email"]).first()
+    db.create_all()
 
-        if not exists:
-            new_doctor = Doctor(
+    for doctor in DOCTORS:
+        existing = Doctor.query.filter_by(email=doctor["email"]).first()
+        password_hash = generate_password_hash(doctor["password"])
+
+        if existing:
+            existing.name = doctor["name"]
+            existing.specialization = doctor["specialization"]
+            existing.password = password_hash
+        else:
+            db.session.add(Doctor(
                 name=doctor["name"],
                 specialization=doctor["specialization"],
                 email=doctor["email"],
-                password=doctor["password"]
-            )
-            db.session.add(new_doctor)
+                password=password_hash
+            ))
 
     db.session.commit()
-    print("Doctors seeded successfully!")
+    print("Doctors seeded successfully.")

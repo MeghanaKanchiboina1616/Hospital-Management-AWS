@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-1">Welcome, {{ patient.name }}</h1>
+        <p class="text-secondary mb-0">Manage appointments and uploaded reports.</p>
+    </div>
+    <a class="btn btn-primary" href="{{ url_for('book_appointment') }}">Book Appointment</a>
+</div>
+<div class="row g-3 mb-4">
+    <div class="col-md-6"><div class="panel metric"><div class="text-secondary">Upcoming</div><div class="fs-3 fw-semibold">{{ upcoming|length }}</div></div></div>
+    <div class="col-md-6"><div class="panel metric"><div class="text-secondary">History</div><div class="fs-3 fw-semibold">{{ history|length }}</div></div></div>
+</div>
+<div class="panel">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h5 mb-0">Upcoming Appointments</h2>
+        <a href="{{ url_for('my_appointments') }}">View all</a>
+    </div>
+    {% set appointments = upcoming %}
+    {% include "partials/appointment_table.html" %}
+</div>
+{% endblock %}

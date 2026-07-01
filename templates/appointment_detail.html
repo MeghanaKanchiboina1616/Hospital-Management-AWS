@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-7">
+        <div class="panel h-100">
+            <h1 class="h4 mb-4">Patient Details</h1>
+            <dl class="row mb-0">
+                <dt class="col-sm-4">Name</dt><dd class="col-sm-8">{{ appointment.patient.name }}</dd>
+                <dt class="col-sm-4">Email</dt><dd class="col-sm-8">{{ appointment.patient.email }}</dd>
+                <dt class="col-sm-4">Phone</dt><dd class="col-sm-8">{{ appointment.patient.phone }}</dd>
+                <dt class="col-sm-4">Date</dt><dd class="col-sm-8">{{ appointment.appointment_date.strftime('%d %b %Y') }}</dd>
+                <dt class="col-sm-4">Time</dt><dd class="col-sm-8">{{ appointment.appointment_time.strftime('%I:%M %p') }}</dd>
+                <dt class="col-sm-4">Reports</dt>
+                <dd class="col-sm-8">
+                    {% for report in appointment.reports %}
+                        <a href="{{ url_for('download_report', report_id=report.id) }}">{{ report.file_name }}</a><br>
+                    {% else %}
+                        <span class="text-secondary">No reports uploaded.</span>
+                    {% endfor %}
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="panel">
+            <h2 class="h5 mb-3">Update Status</h2>
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">{{ form.status.label(class="form-label") }} {{ form.status(class="form-select") }}</div>
+                {{ form.submit(class="btn btn-primary") }}
+                <a class="btn btn-outline-secondary" href="{{ url_for('doctor_dashboard') }}">Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

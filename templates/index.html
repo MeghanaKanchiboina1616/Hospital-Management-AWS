@@ -1,13 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>GM Hospital</title>
-</head>
-<body>
-    <h1>GM Multispeciality Hospital</h1>
-
-    <a href="#">Patient Login</a>
-    <br>
-    <a href="#">Doctor Login</a>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<section class="panel mb-4">
+    <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+            <h1 class="display-6 fw-semibold mb-3">Cloud-based appointments and medical reports</h1>
+            <p class="lead text-secondary mb-4">Patients can book visits, upload previous reports, and doctors can review appointments before consultation.</p>
+            <div class="d-flex flex-wrap gap-2">
+                <a class="btn btn-primary" href="{{ url_for('register') }}">Register as Patient</a>
+                <a class="btn btn-outline-primary" href="{{ url_for('login') }}">Patient Login</a>
+                <a class="btn btn-outline-secondary" href="{{ url_for('doctor_login') }}">Doctor Login</a>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="panel metric">
+                <h2 class="h5">Available Doctors</h2>
+                <div class="list-group list-group-flush">
+                    {% for doctor in doctors %}
+                        <div class="list-group-item px-0">
+                            <strong>{{ doctor.name }}</strong><br>
+                            <span class="text-secondary">{{ doctor.specialization }}</span>
+                        </div>
+                    {% else %}
+                        <p class="text-secondary mb-0">Seed doctors to display availability.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
