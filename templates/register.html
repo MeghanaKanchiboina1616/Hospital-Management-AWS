@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Registration</title>
+</head>
+<body>
+    <h2>Patient Registration</h2>
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.name.label }}<br>
+        {{ form.name(size=40) }}<br><br>
+
+        {{ form.email.label }}<br>
+        {{ form.email(size=40) }}<br><br>
+
+        {{ form.phone.label }}<br>
+        {{ form.phone(size=40) }}<br><br>
+
+        {{ form.password.label }}<br>
+        {{ form.password(size=40) }}<br><br>
+
+        {{ form.submit() }}
+    </form>
+</body>
+</html>

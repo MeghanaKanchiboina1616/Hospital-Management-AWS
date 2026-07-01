@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Login</title>
+</head>
+<body>
+
+<h2>Patient Login</h2>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    {{ form.email.label }}<br>
+    {{ form.email(size=40) }}<br><br>
+
+    {{ form.password.label }}<br>
+    {{ form.password(size=40) }}<br><br>
+
+    {{ form.submit() }}
+
+</form>
+
+</body>
+</html>
