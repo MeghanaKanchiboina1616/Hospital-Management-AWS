@@ -1,4 +1,4 @@
-# 🏥 GM Hospital Portal
+# 🏥 Cloud-Based Hospital Management System
 
 A cloud-based Hospital Management System developed using **Flask** and deployed on **AWS Elastic Beanstalk**. The application enables patients to register, log in, book appointments, upload medical reports, and manage their healthcare information through a secure and user-friendly web interface.
 
