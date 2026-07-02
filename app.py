@@ -20,6 +20,7 @@ import models
 app = Flask(__name__)
 app.config.from_object(Config)
 
+
 DEFAULT_DOCTORS = [
     {
         "name": "Dr. Ravi Kumar",
@@ -72,7 +73,6 @@ def doctor_required():
 
 
 def initialize_database():
-    db.create_all()
 
     for doctor_data in DEFAULT_DOCTORS:
         doctor = Doctor.query.filter_by(email=doctor_data["email"]).first()
@@ -327,4 +327,4 @@ with app.app_context():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
