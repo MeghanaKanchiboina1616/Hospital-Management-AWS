@@ -244,7 +244,6 @@ Deployment includes:
 # 📈 Future Enhancements
 
 - Admin Dashboard
-- Doctor Dashboard
 - Email Notifications
 - Online Payment Gateway
 - Prescription Management
@@ -265,6 +264,11 @@ Deployment includes:
 ---
 
 # 👩‍💻 Author
+**Ghanta Sri Kameshu**
+B.Tech Computer Science Engineering (AI & ML)
+VVIT, Andhra Pradesh
+BBA
+KL Deemed to be University
 
 **Meghana Kanchiboina**
 
