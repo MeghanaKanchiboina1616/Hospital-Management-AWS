@@ -264,13 +264,6 @@ Deployment includes:
 ---
 
 # 👩‍💻 Author
-**Ghanta Sri Kameshu**
-
-B.Tech Computer Science Engineering (AI & ML)
-VVIT, Andhra Pradesh
-
-BBA
-KL Deemed to be University
 
 **Meghana Kanchiboina**
 
